@@ -5,7 +5,11 @@
         "watch": "echo TODO: watch",
         "prod": "webpack --config build/webpack.config.js --mode production"
     },
+    "browserslist": "> 0.5% in GB",
     "dependencies": {
+        "@babel/core": "^7.9.0",
+        "@babel/preset-env": "^7.9.5",
+        "babel-loader": "^8.1.0",
         "webpack": "^4.42.1",
         "webpack-cli": "^3.3.11"
     }
