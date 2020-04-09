@@ -2,12 +2,13 @@
     "private": true,
     "scripts": {
         "dev": "webpack --config build/webpack.config.js --mode development",
-        "watch": "echo TODO: watch",
+        "watch": "webpack --config build/webpack.config.js --mode development --watch",
         "prod": "webpack --config build/webpack.config.js --mode production"
     },
     "browserslist": "> 0.5% in GB",
     "dependencies": {
         "@babel/core": "^7.9.0",
+        "@babel/plugin-transform-runtime": "^7.9.0",
         "@babel/preset-env": "^7.9.5",
         "babel-loader": "^8.1.0",
         "webpack": "^4.42.1",
