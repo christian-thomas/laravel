@@ -11,9 +11,9 @@ cd "$(dirname "$0")/.."
 
 # If no arguments are passed; run dev build
 if [[ $# -eq 0 ]] ; then
-    ./scripts/build yarn run dev
+    ./scripts/build npm run dev
     exit 0
 fi
 
-# Pass any arguments as command into the build container 
+# Pass any arguments as command into the build container
 docker-compose run --service-ports --rm build $@

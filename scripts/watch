@@ -9,4 +9,4 @@ set -e
 
 cd "$(dirname "$0")/.."
 
-./scripts/build yarn run watch
+./scripts/build npm run watch

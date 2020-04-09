@@ -10,7 +10,7 @@ set -e
 cd "$(dirname "$0")/.."
 
 echo "Updating build dependencies"
-./scripts/build yarn install
+./scripts/build npm install
 
 echo -e "\nUpdating application dependencies"
 docker-compose exec app php /usr/bin/composer install --prefer-dist --no-suggest
