@@ -1,8 +1,12 @@
 {
     "private": true,
     "scripts": {
-        "dev": "echo TODO: dev",
+        "dev": "webpack --config build/webpack.config.js --mode development",
         "watch": "echo TODO: watch",
-        "prod": "echo TODO: prodn"
+        "prod": "webpack --config build/webpack.config.js --mode production"
+    },
+    "dependencies": {
+        "webpack": "^4.42.1",
+        "webpack-cli": "^3.3.11"
     }
 }
