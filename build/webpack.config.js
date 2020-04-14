@@ -2,11 +2,14 @@ const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
-	entry: './resources/assets/js/app.js',
+	context: path.resolve(__dirname, '../resources/assets'),
+	entry: {
+		app: './js/app.js',
+	},
 	output: {
-		filename: 'app.js',
-		path: path.resolve(__dirname, '../public/compiled/js/'),
-		publicPath: '/compiled/js/',
+    filename: 'js/[name].js',
+		path: path.resolve(__dirname, '../public/compiled/'),
+		publicPath: '/compiled/',
 	},
 	module: {
 		rules: [
@@ -56,10 +59,11 @@ module.exports = {
 		host: '0.0.0.0',
 		port: 5757,
 		public: 'localhost:5757',
-		publicPath: '/compiled/js/',
+		publicPath: '/compiled/',
 		proxy: {
-			context: ['**', '!/compiled/js/**'],
+			context: ['**', '!/compiled/**'],
 			target: 'http://web:80',
 		},
+		stats: 'minimal',
 	},
 };
