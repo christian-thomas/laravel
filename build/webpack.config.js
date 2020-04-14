@@ -52,7 +52,9 @@ module.exports = {
 	],
 	resolve: {
 		alias: {
+			// 'vue$': 'vue/dist/vue.common.js',
 			'vue$': 'vue/dist/vue.esm.js',
+			'@': path.resolve(__dirname, '../resources/assets/'),
 		},
 	},
 	devServer: {
