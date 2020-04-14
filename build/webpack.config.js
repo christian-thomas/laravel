@@ -1,13 +1,19 @@
 const path = require('path');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
 	entry: './resources/assets/js/app.js',
 	output: {
 		filename: 'app.js',
-		path: path.resolve(__dirname, '../public/compiled/js'),
+		path: path.resolve(__dirname, '../public/compiled/js/'),
+		publicPath: '/compiled/js/',
 	},
 	module: {
 		rules: [
+			{
+				test: /\.vue$/,
+				loader: 'vue-loader',
+			},
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
@@ -23,7 +29,7 @@ module.exports = {
 								},
 							],
 						],
-            plugins: [
+						plugins: [
 							// '@babel/plugin-syntax-dynamic-import',
 							// '@babel/plugin-proposal-object-rest-spread',
 							[
@@ -37,5 +43,23 @@ module.exports = {
 				},
 			},
 		],
+	},
+	plugins: [
+		new VueLoaderPlugin(),
+	],
+	resolve: {
+		alias: {
+			'vue$': 'vue/dist/vue.esm.js',
+		},
+	},
+	devServer: {
+		host: '0.0.0.0',
+		port: 5757,
+		public: 'localhost:5757',
+		publicPath: '/compiled/js/',
+		proxy: {
+			context: ['**', '!/compiled/js/**'],
+			target: 'http://web:80',
+		},
 	},
 };
