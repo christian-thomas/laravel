@@ -45,6 +45,20 @@ module.exports = {
 					},
 				},
 			},
+			{
+				// TODO: check w/ fonts
+				test: /\.(jpe?g|png|svg)$/i,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							context: 'resources/assets',
+							esModule: false,
+							name: '[path][name].[ext]',
+						},
+					},
+				],
+			},
 		],
 	},
 	plugins: [
