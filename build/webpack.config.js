@@ -69,8 +69,7 @@ module.exports = (env, { mode }) => {
 		],
 		resolve: {
 			alias: {
-				// 'vue$': 'vue/dist/vue.common.js',
-				'vue$': 'vue/dist/vue.esm.js',
+				'vue$': 'vue/dist/vue.common.js',
 				'@': path.resolve(__dirname, '../resources/assets/'),
 			},
 		},
