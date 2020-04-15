@@ -17,6 +17,12 @@ class PageDefaultsViewComposer extends BaseViewComposer
     protected function defaultsForFrontend()
     {
         return [
+            'app' => [
+                'i18n' => [
+                    'locale' => config('app.locale'),
+                    'fallback_locale' => config('app.fallback_locale'),
+                ],
+            ],
             'page' => [
                 'title' => 'Frontend | Page Title',
                 'description' => 'Page description',
@@ -44,6 +50,12 @@ class PageDefaultsViewComposer extends BaseViewComposer
     protected function defaultsForApp()
     {
         return [
+            'app' => [
+                'i18n' => [
+                    'locale' => config('app.locale'),
+                    'fallback_locale' => config('app.fallback_locale'),
+                ],
+            ],
             'page' => [
                 'title' => trans('meta.default.title'),
                 'description' => trans('meta.default.description'),

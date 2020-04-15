@@ -23,6 +23,10 @@
 	</div>
 
 	@section('app:after')
+		<script>
+			window.app = @json($app);
+		</script>
+
 		<script src="https://polyfill.io/v3/polyfill.min.js?features={{ implode('%2C', [
 			// 'Array.from',
 			'Promise',

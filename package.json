@@ -12,6 +12,8 @@
         "@babel/preset-env": "^7.9.5",
         "babel-loader": "^8.1.0",
         "file-loader": "^6.0.0",
+        "lang.js": "^1.1.14",
+        "laravel-localization-loader": "^1.0.5",
         "vue": "^2.6.11",
         "vue-loader": "^15.9.1",
         "vue-template-compiler": "^2.6.11",

@@ -62,6 +62,10 @@ module.exports = (env, { mode }) => {
 						},
 					],
 				},
+				{
+					test: /resources\/lang.+\.php$/,
+					loader: 'laravel-localization-loader',
+				},
 			],
 		},
 		plugins: [
@@ -70,7 +74,7 @@ module.exports = (env, { mode }) => {
 		resolve: {
 			alias: {
 				'vue$': 'vue/dist/vue.common.js',
-				'@': path.resolve(__dirname, '../resources/assets/'),
+				'@': path.resolve(__dirname, '../resources/'),
 			},
 		},
 		devtool: prod ? false : 'cheap-eval-source-map',
