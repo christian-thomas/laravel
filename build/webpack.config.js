@@ -17,6 +17,15 @@ module.exports = (env, { mode }) => {
 		module: {
 			rules: [
 				{
+					test: /\.(js|vue)$/,
+					loader: 'eslint-loader',
+					enforce: 'pre',
+					exclude: /node_modules/,
+					options: {
+						configFile: 'build/.eslintrc',
+					},
+				},
+				{
 					test: /\.vue$/,
 					loader: 'vue-loader',
 				},
@@ -76,6 +85,7 @@ module.exports = (env, { mode }) => {
 				'vue$': 'vue/dist/vue.common.js',
 				'@': path.resolve(__dirname, '../resources/'),
 			},
+			extensions: ['*', '.js', '.json', '.vue'],
 		},
 		devtool: prod ? false : 'cheap-eval-source-map',
 		devServer: {
