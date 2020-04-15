@@ -1,16 +1,32 @@
+const fs = require('fs');
+const crypto = require('crypto');
 const path = require('path');
+
+const ManifestPlugin = require('webpack-manifest-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = (env, { mode }) => {
 	const prod = mode === 'production';
 
+	const hash = (file) => {
+		if (!prod) {
+			return file;
+		}
+
+		const absolutePath = path.resolve(__dirname, `../public${file}`);
+
+		const data = fs.readFileSync(absolutePath, 'utf8');
+
+		return crypto.createHash('sha1').update(data).digest('hex').substr(0, 20);
+	};
+
 	return {
 		context: path.resolve(__dirname, '../resources/assets'),
 		entry: {
-			app: './js/app.js',
+			'js/app': './js/app.js',
 		},
 		output: {
-			filename: 'js/[name].js',
+			filename: '[name].js',
 			path: path.resolve(__dirname, '../public/compiled/'),
 			publicPath: '/compiled/',
 		},
@@ -78,6 +94,14 @@ module.exports = (env, { mode }) => {
 			],
 		},
 		plugins: [
+			new ManifestPlugin({
+				basePath: '/compiled/',
+				fileName: '../mix-manifest.json',
+				generate: (seed, files, entrypoints) => files.reduce((manifest, { name, path }) => ({
+					...manifest,
+					[name]: prod ? `${path}?${hash(name)}` : path,
+				}), seed),
+			}),
 			new VueLoaderPlugin(),
 		],
 		resolve: {
