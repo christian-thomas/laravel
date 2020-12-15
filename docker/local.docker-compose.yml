@@ -23,6 +23,7 @@ services:
     working_dir: /var/www
     environment:
       - "COMPOSER_ALLOW_SUPERUSER=true"
+      - "COMPOSER_MEMORY_LIMIT=-1"
       - "DBUS_SESSION_BUS_ADDRESS=/dev/null"
 
   db:
