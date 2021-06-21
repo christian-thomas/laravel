@@ -2,7 +2,9 @@
 	@apply max-w-prose;
 
 	> * {
-		@apply mt-em;
+		& {
+			@apply mt-em;
+		}
 
 		&:first-child {
 			@apply mt-0;
@@ -29,10 +31,14 @@
 
 	ol,
 	ul {
-		@apply mx-5;
+		& {
+			@apply mx-5;
+		}
 
 		> li {
-			@apply mt-em;
+			& {
+				@apply mt-em;
+			}
 
 			&:first-child {
 				@apply mt-0;
